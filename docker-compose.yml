@@ -1,0 +1,27 @@
+# version: '3'
+services:
+  frontend:
+    container_name: frontend-svc
+    image: oni001/frontend:1.0.0
+    ports:
+      - 3000:3000
+    deploy:
+      mode: replicated
+      replicas: 1
+    networks:
+      - micro-svc
+
+  backend:
+    container_name: backend-svc
+    image: oni001/backend:1.0.0
+    ports:
+      - 8000:8000
+    deploy:
+      mode: replicated
+      replicas: 1
+    networks:
+      - micro-svc
+
+networks:
+  micro-svc:
+    name: micro-svc

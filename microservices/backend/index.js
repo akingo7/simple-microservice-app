@@ -23,6 +23,8 @@ app.get('/api/data', (req, res) => {
   res.json(data);
 });
 
-app.listen(8000, () => {
-  console.log(`Backend microservice running on ${process.env.BACKEND_URL}`);
+const server = app.listen(8000, () => {
+  console.log(`Backend microservice running on ${server.address().port}`);
 });
+
+module.exports = server
